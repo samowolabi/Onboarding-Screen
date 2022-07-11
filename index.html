@@ -51,9 +51,12 @@
     </section>
 
     <script>
+
         // Hide Loading
+        document.querySelector('body').style.overflow = "hidden";
         let hideLoadingIconContainer = () => {
             document.querySelector('.loadingIconContainer').classList.remove('active');
+            document.querySelector('body').style.overflow = "initial";
         }
         setTimeout(hideLoadingIconContainer, 4000);
 
