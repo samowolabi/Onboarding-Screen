@@ -221,6 +221,11 @@
         content: url('../img/lock.svg');
     }
 
+    .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div.locked:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div.hide {
         display: none;
     }
@@ -230,7 +235,7 @@
     }
 
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div.disabled:hover {
-        opacity: 0.35;
+        opacity: 0.3;
         transform: scale(1);
     }
 
@@ -243,7 +248,7 @@
         font-family: 'OptimusPrinceps', sans-serif;
         text-align: center;
         font-size: 20px;
-    }
+    } 
 
     @media only screen and (min-width: 320px) and (max-width: 480px) {
         .homePageSwitchAppsContainer {
@@ -262,6 +267,7 @@
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
             margin: 0;
             margin-top: 2rem;
+            width: 87%;
         }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div h3 {
             font-size: 22px;
