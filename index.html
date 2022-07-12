@@ -73,9 +73,12 @@
                 function statusDiv() {
                     return value.status === 'locked' ? 'locked' : '';
                 }
+                function highlightedDiv() {
+                    return value.highlight  ? 'highlighted' : '';
+                }
 
                 appDivContent += `
-                    <div id="${value.url}" class="${visibleDiv()} ${statusDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]}>
+                    <div id="${value.url}" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]}>
                         <img src="${value.image}" alt="">
                         <h3>${value.title}</h3>
                     </div>
