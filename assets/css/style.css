@@ -157,7 +157,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 4rem 14rem;
+        width: 100%;
         background: #000000;
     }
 
@@ -172,6 +172,7 @@
         font-family: 'OptimusPrinceps', sans-serif;
         text-align: center;
         font-size: 36px;
+        padding-top: 6rem;
     }
 
     .homePageSwitchAppsContainer .elementSeparatorOrnament img {
@@ -183,6 +184,7 @@
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 5.5rem;
+        padding: 2rem 14rem;
     }
 
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
@@ -248,15 +250,12 @@
     } 
 
     @media only screen and (min-width: 480px) and (max-width: 1024px) {
-        .homePageSwitchAppsContainer {
-            padding: 5rem 2rem;
+        .homePageSwitchAppsContainer .homePageSwitchAppsDiv {
+            padding: 3rem 2rem;
         }
     }
 
     @media only screen and (min-width: 320px) and (max-width: 480px) {
-        .homePageSwitchAppsContainer {
-            padding: 2rem 0.2rem;
-        }
         .homePageSwitchAppsContainer .elementSeparatorOrnament img {
             width: 300px;
          }
@@ -266,6 +265,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 2rem;
+            padding: 2.5rem 0.2rem;
         }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
             margin: 0;
