@@ -33,66 +33,19 @@
     <section class="homePageSwitchAppsContainer">
     </section>
 
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
     <script>
-        // Hide Loading
-        document.querySelector('body').style.overflow = "hidden";
-        let hideLoadingIconContainer = () => {
-            document.querySelector('.loadingIconContainer').classList.remove('active');
-            document.querySelector('body').style.removeProperty('overflow');
-        }
-        setTimeout(hideLoadingIconContainer, 4000);
-
-        // Toggle Navigate Pages
-        let openCloseFloatingButton = () => {
-            document.querySelector('.materialFloatingButtonContainer').classList.toggle('active');
-            document.querySelector('.materialFloatingButtonContainer .materialFloatingButton').classList.toggle('active');
-        }
-        document.querySelector('.materialFloatingButtonContainer .materialFloatingButton').addEventListener('click', function (event) {
-            openCloseFloatingButton();
+        // Go Home
+        document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
+            // Call Ajax Function to fetch Apps Content
+            callAjaxFunc(formData, renderAppCallBack);
         });
-        document.querySelector('.materialFloatingButtonContainer .materialFloatingLinkButton').addEventListener('click', function (event) {
-            openCloseFloatingButton();
-        });
-    </script>
-
-    <script>
-        // Render App UI
-        let renderAppFunc = (appContent) => {
-            let parentSelectorContainer = 'homePageSwitchAppsContainer';
-            
-            // Show Loader
-            document.querySelector('.loadingIconContainer').classList.add('active');
-
-            // Apps
-            let appDivContent = ``;
-            appContent.appDiv.forEach(function(value) {
-                appDivContent += `
-                    <div id="${value.url}" onclick="loadAppIframeFunc(this.id)">
-                        <img src="${value.image}" alt="">
-                        <h3>${value.title}</h3>
-                    </div>
-                `;
-            });
-
-            let htmlContent = `
-                <h2>${appContent.title}</h2>
-                <div class="elementSeparatorOrnament">
-                    <img src="assets/img/Separator.min.png" alt="">
-                </div>
-                <div class="homePageSwitchAppsDiv">${appDivContent}</div>
-            `;
-            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
-
-            // Hide Loader
-            document.querySelector('.loadingIconContainer').classList.remove('active');
-        }
 
         // Load App iframe
         function loadAppIframeFunc(iframeURL) {
             let parentSelectorContainer = 'homePageSwitchAppsContainer';
-
-            // Show Loader
-            document.querySelector('.loadingIconContainer').classList.add('active');
+            showHideLoader('open'); // Show Loader
 
             let htmlContent = `
                 <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
@@ -100,40 +53,62 @@
             document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
 
             document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
-                // Hide Loader
-                document.querySelector('.loadingIconContainer').classList.remove('active');
+                showHideLoader('close'); // Hide Loader
             };
         }
 
-        let appContent = {
-            title: "Explore All Our Premium Courses",
-            appDiv: [
-                { 
-                    title : "Live Piano",
-                    subtitle : "The Great Collection",
-                    url : "https://pianoencyclopedia.com/en/members-area/#!/",
-                    visible: true,
-                    status: "enabled", // "locked"
-                    image: "assets/img/tool-all-scales-of-the-world.min.jpg"
-                },
-                { 
-                    title : "Piano Lessons",
-                    subtitle : "The Great Collection",
-                    url : "https://pianoencyclopedia.com/en/the-ultimate-collection-of-piano-music/",
-                    visible: true,
-                    status: "enabled", // "locked"
-                    image: "assets/img/course-film-music.min.jpg"
-                }
-            ]
-        };
-
         // Render App UI
-        renderAppFunc(appContent);
+        let renderAppFunc = (appJSONData) => {
+            let parentSelectorContainer = 'homePageSwitchAppsContainer';
 
-        // Go Back
-        document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
-            renderAppFunc(appContent);
-        });
+            // Apps
+            let appDivContent = ``;
+            appJSONData.home.apps.forEach(function(value) {
+                function disabledDiv() {
+                    return value.status === 'disabled' ? ['disabled', ''] : ['', 'onclick="loadAppIframeFunc(this.id)"'];
+                }
+                function visibleDiv() {
+                    return value.visible ? '' : 'hide';
+                }
+                function statusDiv() {
+                    return value.status === 'locked' ? 'locked' : '';
+                }
+
+                appDivContent += `
+                    <div id="${value.url}" class="${visibleDiv()} ${statusDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]}>
+                        <img src="${value.image}" alt="">
+                        <h3>${value.title}</h3>
+                    </div>
+                `;
+            });
+
+            let htmlContent = `
+                <div>
+                    <h2>${appJSONData.home.title}</h2>
+                    <div class="elementSeparatorOrnament"><img src="assets/img/Separator.min.png" alt=""></div>
+                </div>
+                <div class="homePageSwitchAppsDiv">${appDivContent}</div>
+            `;
+            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
+            showHideLoader('close'); // Hide Loader
+        }
+
+        let renderAppCallBack = (response) => {
+            response = JSON.parse(response);
+            
+            // Render App UI
+            renderAppFunc(response);
+        }
+
+        let formData = {
+            "url": window.location.href,
+            "referrer": document.referrer, 
+            "hs_uid": (localStorage.getItem('hs_uid') || ""), 
+            "hs_uidh": (localStorage.getItem('hs_uidh') || "")
+        }
+
+        // Call Ajax Function to fetch Apps Content
+        callAjaxFunc(formData, renderAppCallBack);
     </script>
 </body>
 </html>
