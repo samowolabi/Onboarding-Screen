@@ -8,17 +8,15 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="loadingIconContainer active">
+    <div class="loadingIconContainer">
         <div class="loadingIconDiv">
             <img src="logo-transparent-BG.png" alt="">
         </div>
     </div>
 
     <div class="materialFloatingButtonContainer">
-        <div class="materialFloatingLinkButton">
-            <a href="index.html">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18V15" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.07 2.81997L3.14002 8.36997C2.36002 8.98997 1.86002 10.3 2.03002 11.28L3.36002 19.24C3.60002 20.66 4.96002 21.81 6.40002 21.81H17.6C19.03 21.81 20.4 20.65 20.64 19.24L21.97 11.28C22.13 10.3 21.63 8.98997 20.86 8.36997L13.93 2.82997C12.86 1.96997 11.13 1.96997 10.07 2.81997Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+        <div class="materialFloatingLinkButton homeBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18V15" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.07 2.81997L3.14002 8.36997C2.36002 8.98997 1.86002 10.3 2.03002 11.28L3.36002 19.24C3.60002 20.66 4.96002 21.81 6.40002 21.81H17.6C19.03 21.81 20.4 20.65 20.64 19.24L21.97 11.28C22.13 10.3 21.63 8.98997 20.86 8.36997L13.93 2.82997C12.86 1.96997 11.13 1.96997 10.07 2.81997Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="materialFloatingLinkButton">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.74V4.67001C22 3.47001 21.02 2.58001 19.83 2.68001H19.77C17.67 2.86001 14.48 3.93001 12.7 5.05001L12.53 5.16001C12.24 5.34001 11.76 5.34001 11.47 5.16001L11.22 5.01001C9.44 3.90001 6.26 2.84001 4.16 2.67001C2.97 2.57001 2 3.47001 2 4.66001V16.74C2 17.7 2.78 18.6 3.74 18.72L4.03 18.76C6.2 19.05 9.55 20.15 11.47 21.2L11.51 21.22C11.78 21.37 12.21 21.37 12.47 21.22C14.39 20.16 17.75 19.05 19.93 18.76L20.26 18.72C21.22 18.6 22 17.7 22 16.74Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.48999V20.49" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.75 8.48999H5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.49H5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -33,38 +31,108 @@
     </div>
 
     <section class="homePageSwitchAppsContainer">
-        <h2 class="elementHeaderYellow fontSizeOptimusH2 maxWidth45 marginTop25 marginBottom4">Explore All <br class="hidden-xs">Our Premium Courses</h2>
-        <div class="elementSeparatorOrnament">
-            <img src="assets/img/Separator.min.png" alt="">
-        </div>
-
-        <div class="homePageSwitchAppsDiv">
-            <div>
-                <img src="assets/img/tool-all-scales-of-the-world.min.jpg" alt="">
-                <h3>Live Piano</h3>
-            </div>
-            <div>
-                <img src="assets/img/course-film-music.min.jpg" alt="">
-                <h3>Piano Lessons</h3>
-            </div>
-        </div>
     </section>
 
     <script>
-
         // Hide Loading
         document.querySelector('body').style.overflow = "hidden";
         let hideLoadingIconContainer = () => {
             document.querySelector('.loadingIconContainer').classList.remove('active');
-            document.querySelector('body').style.overflow = "initial";
+            document.querySelector('body').style.removeProperty('overflow');
         }
         setTimeout(hideLoadingIconContainer, 4000);
 
-
         // Toggle Navigate Pages
-        document.querySelector('.materialFloatingButtonContainer .materialFloatingButton').addEventListener('click', function (event) {
+        let openCloseFloatingButton = () => {
             document.querySelector('.materialFloatingButtonContainer').classList.toggle('active');
-            this.classList.toggle('active');
+            document.querySelector('.materialFloatingButtonContainer .materialFloatingButton').classList.toggle('active');
+        }
+        document.querySelector('.materialFloatingButtonContainer .materialFloatingButton').addEventListener('click', function (event) {
+            openCloseFloatingButton();
+        });
+        document.querySelector('.materialFloatingButtonContainer .materialFloatingLinkButton').addEventListener('click', function (event) {
+            openCloseFloatingButton();
+        });
+    </script>
+
+    <script>
+        // Render App UI
+        let renderAppFunc = (appContent) => {
+            let parentSelectorContainer = 'homePageSwitchAppsContainer';
+            
+            // Show Loader
+            document.querySelector('.loadingIconContainer').classList.add('active');
+
+            // Apps
+            let appDivContent = ``;
+            appContent.appDiv.forEach(function(value) {
+                appDivContent += `
+                    <div id="${value.url}" onclick="loadAppIframeFunc(this.id)">
+                        <img src="${value.image}" alt="">
+                        <h3>${value.title}</h3>
+                    </div>
+                `;
+            });
+
+            let htmlContent = `
+                <h2>${appContent.title}</h2>
+                <div class="elementSeparatorOrnament">
+                    <img src="assets/img/Separator.min.png" alt="">
+                </div>
+                <div class="homePageSwitchAppsDiv">${appDivContent}</div>
+            `;
+            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
+
+            // Hide Loader
+            document.querySelector('.loadingIconContainer').classList.remove('active');
+        }
+
+        // Load App iframe
+        function loadAppIframeFunc(iframeURL) {
+            let parentSelectorContainer = 'homePageSwitchAppsContainer';
+
+            // Show Loader
+            document.querySelector('.loadingIconContainer').classList.add('active');
+
+            let htmlContent = `
+                <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
+            `;
+            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
+
+            document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
+                // Hide Loader
+                document.querySelector('.loadingIconContainer').classList.remove('active');
+            };
+        }
+
+        let appContent = {
+            title: "Explore All Our Premium Courses",
+            appDiv: [
+                { 
+                    title : "Live Piano",
+                    subtitle : "The Great Collection",
+                    url : "https://pianoencyclopedia.com/en/members-area/#!/",
+                    visible: true,
+                    status: "enabled", // "locked"
+                    image: "assets/img/tool-all-scales-of-the-world.min.jpg"
+                },
+                { 
+                    title : "Piano Lessons",
+                    subtitle : "The Great Collection",
+                    url : "https://pianoencyclopedia.com/en/the-ultimate-collection-of-piano-music/",
+                    visible: true,
+                    status: "enabled", // "locked"
+                    image: "assets/img/course-film-music.min.jpg"
+                }
+            ]
+        };
+
+        // Render App UI
+        renderAppFunc(appContent);
+
+        // Go Back
+        document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
+            renderAppFunc(appContent);
         });
     </script>
 </body>

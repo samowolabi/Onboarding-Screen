@@ -4,13 +4,20 @@
         font-weight: 400;
         font-style: normal;
     }
-    body {
+    html, body {
         margin: 0;
+        height: 100%;
+        /* background: #1D0502; */
+    }
+    a {
+        text-decoration: none;
     }
     .loadingIconContainer {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
         width: 100%;
         height: 100%;
         z-index: 15;
@@ -151,16 +158,23 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        max-width: 100%;
         height: 100vh;
         padding: 1.25rem 0.75rem;
         background: #000000;
+    }
+
+    .homePageSwitchAppsContainer iframe {
+        width: 100%;
+        height: 100vh;
+        border: none;
     }
 
     .homePageSwitchAppsContainer h2 {
         color: #ffcb28;
         font-family: 'OptimusPrinceps', sans-serif;
         text-align: center;
-        font-size: 32px;
+        font-size: 36px;
     }
 
     .homePageSwitchAppsContainer .elementSeparatorOrnament img {
@@ -204,7 +218,7 @@
 
     @media only screen and (min-width: 320px) and (max-width: 480px) {
         .homePageSwitchAppsContainer {
-            padding: 4rem 0.75rem;
+            padding: 1.5rem 0.2rem;
         }
         .homePageSwitchAppsContainer .elementSeparatorOrnament img {
             width: 300px;
