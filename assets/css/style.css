@@ -157,10 +157,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        padding: 4rem 0.75rem;
+        padding: 4rem 14rem;
         background: #000000;
     }
 
@@ -190,7 +187,7 @@
 
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
         flex: 0 0 auto;
-        width: 33.33333333%;
+        width: 40%;
         margin: 1rem 2rem;
         box-sizing: border-box;
         cursor: pointer;
@@ -250,9 +247,15 @@
         font-size: 20px;
     } 
 
+    @media only screen and (min-width: 480px) and (max-width: 1024px) {
+        .homePageSwitchAppsContainer {
+            padding: 5rem 2rem;
+        }
+    }
+
     @media only screen and (min-width: 320px) and (max-width: 480px) {
         .homePageSwitchAppsContainer {
-            padding: 1.5rem 0.2rem;
+            padding: 2rem 0.2rem;
         }
         .homePageSwitchAppsContainer .elementSeparatorOrnament img {
             width: 300px;

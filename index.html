@@ -83,10 +83,8 @@
             });
 
             let htmlContent = `
-                <div>
-                    <h2>${appJSONData.home.title}</h2>
-                    <div class="elementSeparatorOrnament"><img src="assets/img/Separator.min.png" alt=""></div>
-                </div>
+                <div><h2>${appJSONData.home.title}</h2></div>
+                <div class="elementSeparatorOrnament"><img src="assets/img/Separator.min.png" alt=""></div>
                 <div class="homePageSwitchAppsDiv">${appDivContent}</div>
             `;
             document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
