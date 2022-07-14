@@ -293,3 +293,149 @@
             font-size: 22px;
         }
     }
+
+    .materialLightBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .materialLightBox > div {
+        width: 70%;
+        background: #000000;
+        background: -webkit-gradient(linear, right top, left top, from(rgb(33, 2, 0)),color-stop(44%, hsla(0, 69%, 25%, 1)),to(rgb(28, 0, 0)));
+        background: -webkit-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+        background: -o-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+        background: linear-gradient(to left, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+        position: relative;
+    }
+
+    .materialLightBox > div div.closeModal {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 2rem;
+        cursor: pointer;
+    }
+
+    .materialLightBox > div div.closeModal svg {
+        stroke: #ffffff;
+        stroke-width: 2;
+        width: 20px;
+        height: 20px;
+        transition: 0.35s;
+    }
+
+    .materialLightBox > div div.closeModal:hover svg {
+        stroke: #ffcb28;
+    }
+
+    .materialLightBox > div img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .materialLightBox > div div.content {
+        padding: 2rem 3.5rem;
+    }
+
+    .materialLightBox > div div.content h3 {
+        color: #ffcb28;
+        font-size: 2.15rem;
+        font-family: 'OptimusPrinceps', sans-serif;
+        margin-top: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .materialLightBox > div div.content h5 {
+        font-size: 1.25rem;   
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    .materialLightBox > div div.content p {
+        padding-top: 1.2rem;
+        opacity: 0.9;
+        font-weight: 400;
+        line-height: 22.5px;
+    }
+
+    .materialLightBox > div div.content .buttonGroup {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 2.4rem;
+    }
+
+    .materialLightBox > div div.content button {
+        cursor: pointer;
+        color: hsl(44,100%,10%);
+        background: hsl(44,100%,50%);
+        border: 2px solid hsl(44,100%,55%);
+        padding: 0.75rem 1.2rem;
+        text-transform: uppercase;
+        border-radius: 6px;
+        font-size: 1.05rem;
+        letter-spacing: 1.5px;
+        transition: 0.25s;
+        outline: 0 !important;
+        margin-left: 2rem;
+    }
+
+    .materialLightBox > div div.content button:hover {
+        background: rgb(248, 200, 69);
+    }
+
+    .materialLightBox > div div.content button.plain {
+        color:#ffffff;
+        background: none;
+        border: 1.35px solid hsl(44,100%,55%);
+    }
+
+    .materialLightBox > div div.content button.plain:hover {
+        color: #ffebb6;
+        border: 1.2px solid rgb(246, 214, 128);
+    }
+
+    @media only screen and (min-width: 480px) and (max-width: 1024px) {
+        .materialLightBox > div {
+            width: 90%;
+        }
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 480px) {
+        .materialLightBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            align-items: flex-end;
+        }
+        .materialLightBox > div {
+            width: 100%;
+            border-radius: 25px 25px 0 0;
+        }
+        .materialLightBox > div img {
+            height: 200px;
+            border-radius: 25px 25px 0 0;
+        }
+        .materialLightBox > div div.content {
+            padding: 2rem 1.5rem;
+        }
+        .materialLightBox > div div.content h3 {
+            font-size: 2rem;
+        }
+        .materialLightBox > div div.content p {
+            padding-top: 1rem;
+        }
+    }
+
+    
