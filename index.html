@@ -8,6 +8,11 @@
     <title>Home</title>
 </head>
 <body>
+    <!-- Modal Container -->
+    <section class="materialLightBox">
+
+    </section>
+
     <div class="loadingIconContainer">
         <div class="loadingIconDiv">
             <img src="logo-transparent-BG.png" alt="">
@@ -57,6 +62,40 @@
             };
         }
 
+        function openAppDetails(thisElement){
+            let appButtonLinkFunc = () => {
+                if(thisElement.getAttribute('data-status') === 'locked') {
+                    return `
+                        <a href="#"><button class="secondary">Read More</button></a>
+                        <a href="${thisElement.getAttribute('data-salesUrl')}"><button>Order Now</button></a>
+                    `;
+                } else {
+                    return `
+                        <a href="${thisElement.getAttribute('data-salesUrl')}"><button>Start Learning</button></a>
+                    `;
+                }
+            };
+
+            let appDetailsHTMLContent = `
+                <div>
+                    <img src="${thisElement.getAttribute('data-image')}" alt="">
+                    <div class="closeModal" onclick="showHideModal('close')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L22.8627 22.5627" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.8623 1.5L1.49961 22.5627" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="content">
+                        <h3>${thisElement.getAttribute('data-title')}</h3>
+                        <h5>${thisElement.getAttribute('data-subtitle')}</h5>
+                        <p>
+                            ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
+                        </p>
+                        <div class="buttonGroup">${appButtonLinkFunc()}</div>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.materialLightBox').innerHTML = appDetailsHTMLContent
+            showHideModal('open');
+        }
+
         // Render App UI
         let renderAppFunc = (appJSONData) => {
             let parentSelectorContainer = 'homePageSwitchAppsContainer';
@@ -65,7 +104,7 @@
             let appDivContent = ``;
             appJSONData.home.apps.forEach(function(value) {
                 function disabledDiv() {
-                    return value.status === 'disabled' ? ['disabled', ''] : ['', 'onclick="loadAppIframeFunc(this.id)"'];
+                    return value.status === 'disabled' ? ['disabled', ''] : ['', 'onclick="openAppDetails(this)"'];
                 }
                 function visibleDiv() {
                     return value.visible ? '' : 'hide';
@@ -78,7 +117,7 @@
                 }
 
                 appDivContent += `
-                    <div id="${value.url}" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]}>
+                    <div id="${value.url}" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]} data-image="${value.image}" data-title="${value.title}" data-subtitle="${value.subtitle}" data-description="${value.description}" data-salesUrl="${value.salesUrl}" data-status="${value.status}">
                         <img src="${value.image}" alt="">
                         <h3>${value.title}</h3>
                     </div>
