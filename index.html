@@ -49,6 +49,7 @@
 
         // Load App iframe
         function loadAppIframeFunc(iframeURL) {
+            showHideModal('close'); // Hide Modal
             let parentSelectorContainer = 'homePageSwitchAppsContainer';
             showHideLoader('open'); // Show Loader
 
@@ -66,12 +67,12 @@
             let appButtonLinkFunc = () => {
                 if(thisElement.getAttribute('data-status') === 'locked') {
                     return `
-                        <a href="#"><button class="secondary">Read More</button></a>
-                        <a href="${thisElement.getAttribute('data-salesUrl')}"><button>Order Now</button></a>
+                        <button class="secondary">Read More</button>
+                        <button onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Order Now</button>
                     `;
                 } else {
                     return `
-                        <a href="${thisElement.getAttribute('data-salesUrl')}"><button>Start Learning</button></a>
+                        <button onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Start Learning</button></a>
                     `;
                 }
             };
