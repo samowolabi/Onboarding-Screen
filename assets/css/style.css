@@ -294,53 +294,23 @@
         }
     }
 
+    .materialDialog {
+        padding: 1rem;
+        background: none;
+    }
+
     .materialLightBox {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 7;
-        display: none;
-        justify-content: center;
-        align-items: center;
         color: #ffffff;
         font-family: 'Lato', sans-serif;
     }
 
-    .materialLightBox.active {
-        display: flex;
-    }
-
     .materialLightBox > div {
-        width: 70%;
+        width: 100%;
         background: #000000;
         background: -webkit-gradient(linear, right top, left top, from(rgb(33, 2, 0)),color-stop(44%, hsla(0, 69%, 25%, 1)),to(rgb(28, 0, 0)));
         background: -webkit-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
         background: -o-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
         background: linear-gradient(to left, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
-        position: relative;
-    }
-
-    .materialLightBox > div div.closeModal {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 2rem;
-        cursor: pointer;
-    }
-
-    .materialLightBox > div div.closeModal svg {
-        stroke: #ffffff;
-        stroke-width: 2;
-        width: 20px;
-        height: 20px;
-        transition: 0.35s;
-    }
-
-    .materialLightBox > div div.closeModal:hover svg {
-        stroke: #ffcb28;
     }
 
     .materialLightBox > div img {
@@ -411,42 +381,11 @@
     }
 
     @media only screen and (min-width: 480px) and (max-width: 1024px) {
-        .materialLightBox > div {
-            width: 90%;
-        }
-    }
+   }
 
     @media only screen and (min-width: 320px) and (max-width: 480px) {
-        .materialLightBox {
-            align-items: flex-end;
-        }
-        .materialLightBox > div {
-            width: 100%;
-            border-radius: 25px 25px 0 0;
-        }
-        .materialLightBox > div[data-open="open"] {
-            animation-name: slideUp;
-            animation-duration: 0.45s;
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: forwards;
-        }
-        .materialLightBox > div[data-open="close"] {
-            animation-name: slideDown;
-            animation-duration: 0.45s;
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: forwards;
-        }
-        @keyframes slideUp {
-            from{transform:translateY(800px)}
-            to{transform:translateY(0px)}
-        }
-        @keyframes slideDown {
-            from{transform:translateY(0px)}
-            to{transform:translateY(800px)}
-        }
         .materialLightBox > div img {
             height: 200px;
-            border-radius: 25px 25px 0 0;
         }
         .materialLightBox > div div.content {
             padding: 2rem 1.5rem;

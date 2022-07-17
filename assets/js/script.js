@@ -10,33 +10,6 @@ let showHideLoader = (status) => {
     }
 }
 
-// Show/Hide Animation
-function hideMaterialLightBoxAnimationEnd() {
-    document.querySelector('.materialLightBox').classList.remove('active');
-}
-
-let showHideModal = (status) => {
-    if(status === 'open') {
-        document.querySelector('body').style.overflow = "hidden";
-        document.querySelector('.materialLightBox').classList.add('active');
-        document.querySelector('.materialLightBox > div').setAttribute('data-open', 'open');
-    }
-    if(status === 'close') {
-        document.querySelector('body').style.removeProperty('overflow');
-        document.querySelector('.materialLightBox > div').setAttribute('data-open', 'close');
-        
-       
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ||
-        (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
-            document.querySelector('.materialLightBox > div').addEventListener("webkitAnimationEnd", hideMaterialLightBoxAnimationEnd,false);
-            document.querySelector('.materialLightBox > div').addEventListener("animationend", hideMaterialLightBoxAnimationEnd,false);
-            document.querySelector('.materialLightBox > div').addEventListener("oanimationend", hideMaterialLightBoxAnimationEnd,false);
-        } else {
-            document.querySelector('.materialLightBox').classList.remove('active');
-        }
-    }
-}
-
 
 // Toggle Navigate Pages
 let openCloseFloatingButton = () => {
