@@ -218,8 +218,21 @@
 
                 appDivContent += `
                     <div id="${value.url}" data-button="" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]} data-image="${value.image}" data-title="${value.title}" data-subtitle="${value.subtitle}" data-description="${value.description}" data-url="${value.url}" data-salesUrl="${value.salesUrl}" data-orderUrl="${value.orderUrl}" data-status="${value.status}">
-                        <img src="${value.image}" alt="">
-                        <h3 class="materialThemeDark fontFamilyLato">${value.title}</h3>
+                        <div class="materialCardImg">
+                            <div class="materialCardImgInside" style="background-image: url(${value.image}); background-color: grey;"></div> 
+                            <div class="materialCardImgOverlay "></div>
+                            <div class="materialCardMediaType materialThemeLightGold materialThemeFlat">
+                                    <i class="fa fa-graduation-cap" title="Course"></i>
+                            </div> 
+                            <div class="materialCardNew materialThemeLightGold materialThemeFlat">
+                                <span data-progress="0">
+                                    <span data-new="" style="display: inline;"><i>NEW</i></span>
+                                    <span data-incomplete="" style="display: none;"><span data-progress-affects-html="">0</span>%</span>
+                                    <span data-complete="" style="display: none;"><i class="fa fa-check"></i></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="content"><h3 class="materialThemeDark fontFamilyLato">${value.title}</h3></div>
                     </div>
                 `;
             }); 

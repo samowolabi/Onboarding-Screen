@@ -193,14 +193,9 @@
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
         flex: 0 0 auto;
         width: 40%;
-        margin: 2rem 2rem;
+        margin: 6rem 2rem;
         box-sizing: border-box;
         cursor: pointer;
-        background: #000000;
-        background: -webkit-gradient(linear, right top, left top, from(rgb(33, 2, 0)),color-stop(44%, hsla(0, 69%, 25%, 1)),to(rgb(28, 0, 0)));
-        background: -webkit-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
-        background: -o-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
-        background: linear-gradient(to left, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
         position: relative;
         transition: 0.35s;
     }
@@ -208,6 +203,19 @@
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div:hover {
         opacity: 0.8;
         transform: scale(0.98);
+    }
+
+    .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div .content {
+        padding: 1rem;
+        background: #000000;
+        background: -webkit-gradient(linear, right top, left top, from(rgb(33, 2, 0)),color-stop(44%, hsla(0, 69%, 25%, 1)),to(rgb(28, 0, 0)));
+        background: -webkit-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+        background: -o-linear-gradient(right, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+        background: linear-gradient(to left, rgb(33, 2, 0) 0%,hsla(0, 69%, 25%, 1) 44%,rgb(28, 0, 0) 100%);
+    }
+
+    .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div .content h3 {
+        margin: 0;
     }
 
     .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div.locked::before {
