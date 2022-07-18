@@ -139,72 +139,71 @@
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/materialInputChoice.js"></script>
 	
     <script>
-            let openLightBox = (htmlContent) => {
-                dialogRewardPointsAdded.init = function(thisComponent) {
-                    thisComponent.html(htmlContent);
+        // Load App iframe
+        let loadAppIframeFunc = (iframeURL) => {
+            let parentSelectorContainer = 'homePageSwitchAppsContainer';
+            showHideLoader('open'); // Show Loader
+
+            let htmlContent = `
+                <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
+            `;
+            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
+
+            document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
+                showHideLoader('close'); // Hide Loader
+            };
+        }
+
+        let openLightBox = (htmlContent) => {
+            dialogRewardPointsAdded.init = function(thisComponent) {
+                thisComponent.html(htmlContent);
+            }
+            //Show dialog
+            materialDialog.show("dialogRewardPointsAdded", {});
+        }
+
+        let openAppDetails = (thisElement) => {
+            let appButtonLinkFunc = () => {
+                if(thisElement.getAttribute('data-status') === 'locked') {
+                    return `
+                        <button class="materialButtonOutline materialThemeDark">Read More</button>
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-button="">Order Now</button>
+                    `;
+                } else {
+                    return `
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-button="">Start Learning</button>
+                    `;
                 }
-                //Show dialog
-                materialDialog.show("dialogRewardPointsAdded", {});
-            }
+            };
 
-            let openAppDetails = (thisElement) => {
-                let appButtonLinkFunc = () => {
-                    if(thisElement.getAttribute('data-status') === 'locked') {
-                        return `
-                            <button class="materialButtonOutline materialThemeDark">Read More</button>
-                            <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Order Now</button>
-                        `;
-                    } else {
-                        return `
-                            <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Start Learning</button>
-                        `;
-                    }
-                };
-
-                let htmlContent = `
-                    <section class="materialLightBox">
-                        <div> 
-                            <img src="${thisElement.getAttribute('data-image')}" alt="">
-                            <div class="content">
-                                <h3>${thisElement.getAttribute('data-title')}</h3>
-                                <h5>${thisElement.getAttribute('data-subtitle')}</h5>
-                                <p>
-                                    ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
-                                </p>
-                                <div class="buttonGroup">${appButtonLinkFunc()}</div>
-                            </div>
+            let htmlContent = `
+                <section class="materialLightBox">
+                    <div> 
+                        <img src="${thisElement.getAttribute('data-image')}" alt="">
+                        <div class="content">
+                            <h3>${thisElement.getAttribute('data-title')}</h3>
+                            <h5>${thisElement.getAttribute('data-subtitle')}</h5>
+                            <p>
+                                ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
+                            </p>
+                            <div class="buttonGroup">${appButtonLinkFunc()}</div>
                         </div>
-                    </section>
-                `;
-                openLightBox(htmlContent);
-            }
+                    </div>
+                </section>
+            `;
+            openLightBox(htmlContent);
+        }
 
-            //Create dialog dynamically
-            $('<div id="dialogRewardPointsAdded" class="materialDialog" data-on-init-callback="dialogRewardPointsAdded.init(thisComponent)"></div>').appendTo('body');
-            var dialogRewardPointsAdded = {}; 
-            
-            
-            // Go Home
-            document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
-                // Call Ajax Function to fetch Apps Content
-                callAjaxFunc(formData, renderAppCallBack);
-            });
-
-            // Load App iframe
-            function loadAppIframeFunc(iframeURL) {
-                showHideModal('close'); // Hide Modal
-                let parentSelectorContainer = 'homePageSwitchAppsContainer';
-                showHideLoader('open'); // Show Loader
-
-                let htmlContent = `
-                    <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
-                `;
-                document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
-
-                document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
-                    showHideLoader('close'); // Hide Loader
-                };
-            }
+        //Create dialog dynamically
+        $('<div id="dialogRewardPointsAdded" class="materialDialog" data-on-init-callback="dialogRewardPointsAdded.init(thisComponent)"></div>').appendTo('body');
+        var dialogRewardPointsAdded = {}; 
+        
+        
+        // Go Home
+        document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
+            // Call Ajax Function to fetch Apps Content
+            callAjaxFunc(formData, renderAppCallBack);
+        });
     
 
         // Render App UI
@@ -230,7 +229,7 @@
                 appDivContent += `
                     <div id="${value.url}" data-button="" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]} data-image="${value.image}" data-title="${value.title}" data-subtitle="${value.subtitle}" data-description="${value.description}" data-salesUrl="${value.salesUrl}" data-status="${value.status}">
                         <img src="${value.image}" alt="">
-                        <h3>${value.title}</h3>
+                        <h3 class="materialThemeDark fontFamilyLato">${value.title}</h3>
                     </div>
                 `;
             }); 
