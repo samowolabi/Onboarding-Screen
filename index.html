@@ -153,12 +153,12 @@
             let appButtonLinkFunc = () => { 
                 if(thisElement.getAttribute('data-status') === 'locked') {
                     return `
-                        <button class="materialButtonOutline materialThemeDark">Read More</button>
-                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Order Now</button>
+                        <button class="materialButtonOutline materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Read More</button>
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-orderUrl')}')" data-value="close">Order Now</button>
                     `;
                 } else {
                     return `
-                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Start Learning</button>
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-url')}')" data-value="close">Start Learning</button>
                     `;
                 }
             };
@@ -214,7 +214,7 @@
                 }
 
                 appDivContent += `
-                    <div id="${value.url}" data-button="" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]} data-image="${value.image}" data-title="${value.title}" data-subtitle="${value.subtitle}" data-description="${value.description}" data-salesUrl="${value.salesUrl}" data-status="${value.status}">
+                    <div id="${value.url}" data-button="" class="${visibleDiv()} ${statusDiv()} ${highlightedDiv()} ${disabledDiv()[0]}" ${disabledDiv()[1]} data-image="${value.image}" data-title="${value.title}" data-subtitle="${value.subtitle}" data-description="${value.description}" data-url="${value.url}" data-salesUrl="${value.salesUrl}" data-orderUrl="${value.orderUrl}" data-status="${value.status}">
                         <img src="${value.image}" alt="">
                         <h3 class="materialThemeDark fontFamilyLato">${value.title}</h3>
                     </div>
