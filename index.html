@@ -163,15 +163,15 @@
         }
 
         let openAppDetails = (thisElement) => {
-            let appButtonLinkFunc = () => {
+            let appButtonLinkFunc = () => { 
                 if(thisElement.getAttribute('data-status') === 'locked') {
                     return `
                         <button class="materialButtonOutline materialThemeDark">Read More</button>
-                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-button="">Order Now</button>
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Order Now</button>
                     `;
                 } else {
                     return `
-                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-button="">Start Learning</button>
+                        <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Start Learning</button>
                     `;
                 }
             };
