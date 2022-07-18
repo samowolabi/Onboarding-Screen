@@ -148,6 +148,19 @@
             }
 
             let openAppDetails = (thisElement) => {
+                let appButtonLinkFunc = () => {
+                    if(thisElement.getAttribute('data-status') === 'locked') {
+                        return `
+                            <button class="materialButtonOutline materialThemeDark">Read More</button>
+                            <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Order Now</button>
+                        `;
+                    } else {
+                        return `
+                            <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Start Learning</button>
+                        `;
+                    }
+                };
+
                 let htmlContent = `
                     <section class="materialLightBox">
                         <div> 
@@ -158,6 +171,7 @@
                                 <p>
                                     ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
                                 </p>
+                                <div class="buttonGroup">${appButtonLinkFunc()}</div>
                             </div>
                         </div>
                     </section>

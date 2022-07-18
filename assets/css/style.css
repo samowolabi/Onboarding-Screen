@@ -350,36 +350,6 @@
         margin-top: 2.4rem;
     }
 
-    .materialLightBox > div div.content button {
-        cursor: pointer;
-        color: hsl(44,100%,10%);
-        background: hsl(44,100%,50%);
-        border: 2px solid hsl(44,100%,55%);
-        padding: 0.75rem 1.2rem;
-        text-transform: uppercase;
-        border-radius: 6px;
-        font-size: 1.05rem;
-        letter-spacing: 1.5px;
-        transition: 0.25s;
-        outline: 0 !important;
-        margin-left: 2rem;
-    }
-
-    .materialLightBox > div div.content button:hover {
-        background: rgb(248, 200, 69);
-    }
-
-    .materialLightBox > div div.content button.secondary {
-        color:#ffffff;
-        background: none;
-        border: 1.35px solid hsl(44,100%,55%);
-    }
-
-    .materialLightBox > div div.content button.secondary:hover {
-        color: #ffebb6;
-        border: 1.2px solid rgb(246, 214, 128);
-    }
-
     @media only screen and (min-width: 480px) and (max-width: 1024px) {
    }
 
@@ -399,12 +369,6 @@
         .materialLightBox > div div.content .buttonGroup {
             display: flex;
             flex-direction: column;
-        }
-        .materialLightBox > div div.content button {
-            margin: 0;
-            margin-bottom: 1rem;
-            padding: 1.25rem 1.2rem;
-            width: 100%;
         }
     }
 
