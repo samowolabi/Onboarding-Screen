@@ -37,6 +37,9 @@
 	<link rel="stylesheet" type="text/css" href="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/css/materialInput.css">
 	<link rel="stylesheet" type="text/css" href="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/css/materialForm.css">
 	<link rel="stylesheet" type="text/css" href="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/css/margin-helpers-compiled.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
@@ -153,7 +156,7 @@
             let appButtonLinkFunc = () => { 
                 if(thisElement.getAttribute('data-status') === 'locked') {
                     return `
-                        <button class="materialButtonOutline materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Read More</button>
+                        <button class="materialButtonOutline materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Read More</button>
                         <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-orderUrl')}')" data-value="close">Order Now</button>
                     `;
                 } else {
@@ -168,9 +171,9 @@
                     <div> 
                         <img src="${thisElement.getAttribute('data-image')}" alt="">
                         <div class="content">
-                            <h3>${thisElement.getAttribute('data-title')}</h3>
-                            <h5>${thisElement.getAttribute('data-subtitle')}</h5>
-                            <p>
+                            <h2 class="materialHeader materialThemeDark fontFamilyOptimus">${thisElement.getAttribute('data-title')}</h2>
+                            <h3 class="materialHeader materialThemeDark fontFamilyLato">${thisElement.getAttribute('data-subtitle')}</h3>
+                            <p class="materialParagraph materialThemeDark">
                                 ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
                             </p>
                             <div class="buttonGroup">${appButtonLinkFunc()}</div>
