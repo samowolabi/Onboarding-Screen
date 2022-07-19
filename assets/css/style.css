@@ -304,11 +304,11 @@
         }
     }
 
-    .materialDialog {
+    .materialDialog.appDetailedContentModalDialog {
         padding: 1rem;
         background: none;
     }
-    .materialCloseButton > .fa {
+    .materialDialog.appDetailedContentModalDialog .materialCloseButton > .fa {
         color: white;
     }
 
