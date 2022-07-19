@@ -54,14 +54,10 @@
     </div> 
 
     <div class="materialFloatingButtonContainer">
-        <div class="materialFloatingLinkButton homeBtn">
+        <div class="materialFloatingLinkButton" onclick="backToHomeFunc()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18V15" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.07 2.81997L3.14002 8.36997C2.36002 8.98997 1.86002 10.3 2.03002 11.28L3.36002 19.24C3.60002 20.66 4.96002 21.81 6.40002 21.81H17.6C19.03 21.81 20.4 20.65 20.64 19.24L21.97 11.28C22.13 10.3 21.63 8.98997 20.86 8.36997L13.93 2.82997C12.86 1.96997 11.13 1.96997 10.07 2.81997Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="materialFloatingLinkButton">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.74V4.67001C22 3.47001 21.02 2.58001 19.83 2.68001H19.77C17.67 2.86001 14.48 3.93001 12.7 5.05001L12.53 5.16001C12.24 5.34001 11.76 5.34001 11.47 5.16001L11.22 5.01001C9.44 3.90001 6.26 2.84001 4.16 2.67001C2.97 2.57001 2 3.47001 2 4.66001V16.74C2 17.7 2.78 18.6 3.74 18.72L4.03 18.76C6.2 19.05 9.55 20.15 11.47 21.2L11.51 21.22C11.78 21.37 12.21 21.37 12.47 21.22C14.39 20.16 17.75 19.05 19.93 18.76L20.26 18.72C21.22 18.6 22 17.7 22 16.74Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.48999V20.49" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.75 8.48999H5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.49H5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="materialFloatingLinkButton">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.25V15.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 5.75V18.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3.25V20.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 5.75V18.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8.25V15.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="materialFloatingLinkButton loginLogOutBtn" onclick="loginLogOutUser(this)">
         </div>
         <div class="materialFloatingButton">
             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.625 13H24.375" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.625 22.75H24.375" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.625 3.25H24.375" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -73,45 +69,7 @@
     </section>
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script>
-        // function openAppDetailsa(thisElement) {
-        //     let appButtonLinkFunc = () => {
-        //         if(thisElement.getAttribute('data-status') === 'locked') {
-        //             return `
-        //                 <button class="secondary">Read More</button>
-        //                 <button onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Order Now</button>
-        //             `;
-        //         } else {
-        //             return `
-        //                 <button onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')">Start Learning</button></a>
-        //             `;
-        //         }
-        //     };
-
-        //     let appDetailsHTMLContent = `
-        //         <div> 
-        //             <img src="${thisElement.getAttribute('data-image')}" alt="">
-        //             <div class="closeModal" onclick="showHideModal('close')">
-        //                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L22.8627 22.5627" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.8623 1.5L1.49961 22.5627" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        //             </div>
-        //             <div class="content">
-        //                 <h3>${thisElement.getAttribute('data-title')}</h3>
-        //                 <h5>${thisElement.getAttribute('data-subtitle')}</h5>
-        //                 <p>
-        //                     ${thisElement.getAttribute('data-description') !== 'undefined' ? thisElement.getAttribute('data-description') : ''}
-        //                 </p>
-        //                 <div class="buttonGroup">${appButtonLinkFunc()}</div>
-        //             </div>
-        //         </div>
-        //     `;
-        //     document.querySelector('.materialLightBox').innerHTML = appDetailsHTMLContent
-        //     showHideModal('open');
-        // }
-    </script>
-	
-	
-	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/polyfills.js"></script>
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/ripplet.js@0.1.13.js"></script>
@@ -127,7 +85,12 @@
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/materialRating.js"></script>
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/materialDialog.js"></script>
 	<script type="text/javascript" src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-generic/js/materialInputChoice.js"></script>
+    <script src="assets/js/script.js"></script>
     <script src="assets/js/app.dialogs.user-authentication.js"></script>
+    <script>
+        var config = {};
+        config.appName = "GlobalApp";
+    </script>
 	
     <script>
         // Load App iframe
@@ -188,13 +151,6 @@
         //Create dialog dynamically
         $('<div id="dialogRewardPointsAdded" class="materialDialog appDetailedContentModalDialog" data-on-init-callback="dialogRewardPointsAdded.init(thisComponent)"></div>').appendTo('body');
         var dialogRewardPointsAdded = {}; 
-        
-        
-        // Go Home
-        document.querySelector('.materialFloatingButtonContainer .homeBtn').addEventListener('click', function(event) {
-            // Call Ajax Function to fetch Apps Content
-            callAjaxFunc(formData, renderAppCallBack);
-        });
     
 
         // Render App UI
@@ -247,12 +203,39 @@
             showHideLoader('close'); // Hide Loader
         }
 
-        let renderAppCallBack = (response) => {
+
+        // Logged In Status
+        let loggedInStatus = (response) => {
+            document.querySelector('.homePageSwitchAppsContainer h2').innerHTML = `Hi ${response.name}, The Piano Encyclopedia`; // Update Header
+            document.querySelector('.materialFloatingButtonContainer .loginLogOutBtn').setAttribute("data-logged", "yes");
+            document.querySelector('.materialFloatingButtonContainer .loginLogOutBtn').innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.90002 7.55999C9.21002 3.95999 11.06 2.48999 15.11 2.48999H15.24C19.71 2.48999 21.5 4.27999 21.5 8.74999V15.27C21.5 19.74 19.71 21.53 15.24 21.53H15.11C11.09 21.53 9.24002 20.08 8.91002 16.54" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12H3.62" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.85 8.6499L2.5 11.9999L5.85 15.3499" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        }
+
+        // Logged Out Status
+        let loggedOutStatus = () => {
+            document.querySelector('.homePageSwitchAppsContainer h2').innerHTML = `The Piano Encyclopedia`; // Update Header
+            document.querySelector('.materialFloatingButtonContainer .loginLogOutBtn').setAttribute("data-logged", "no")
+            document.querySelector('.materialFloatingButtonContainer .loginLogOutBtn').innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.90002 7.55999C9.21002 3.95999 11.06 2.48999 15.11 2.48999H15.24C19.71 2.48999 21.5 4.27999 21.5 8.74999V15.27C21.5 19.74 19.71 21.53 15.24 21.53H15.11C11.09 21.53 9.24002 20.08 8.91002 16.54" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12H14.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.65 8.6499L16 11.9999L12.65 15.3499" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        }
+
+        // Login and Log Out Status
+        let logUserInOutFunc = (response) => {
+            if (response.logged) {
+                loggedInStatus(response);
+            } else {
+                loggedOutStatus();
+            }
+        }
+
+        let fetchedResponseCallback = (response) => {
             response = JSON.parse(response);
-            
+
             // Render App UI
             renderAppFunc(response);
 			material.init($("body"));
+
+            // Update Login and Log Out Status
+            logUserInOutFunc(response);
 		}
 
         let formData = {
@@ -263,7 +246,24 @@
         }
 
         // Call Ajax Function to fetch Apps Content
-        callAjaxFunc(formData, renderAppCallBack);
+        callAjaxFunc(formData, fetchedResponseCallback);
+
+
+        // Go Home
+        let backToHomeFunc = () => {
+            // Call Ajax Function to fetch Apps Content
+            callAjaxFunc(formData, fetchedResponseCallback);
+        }
+
+        // loginLogOutFunc()
+        let loginLogOutUser = (thisElement) => {
+            if(thisElement.getAttribute('data-logged') === 'yes') {
+                materialDialog.show("dialogLogout", {"modal": true});
+            }
+            if(thisElement.getAttribute('data-logged') === 'no') {
+                materialDialog.show("dialogLogin", {modal: true, hideCallback: function(){}});
+            }
+        }
     </script>
 </body>
 </html>
