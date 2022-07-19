@@ -310,6 +310,9 @@
         padding: 1rem;
         background: none;
     }
+    .materialCloseButton > .fa {
+        color: white;
+    }
 
     .materialLightBox {
         color: #ffffff;
@@ -370,7 +373,6 @@
             flex-direction: column;
         }
         .materialLightBox > div div.content .buttonGroup button {
-            margin: 0;
-            margin-top: 1rem;
+            margin: 1rem 0 0 0;
         }
     }
