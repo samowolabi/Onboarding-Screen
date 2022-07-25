@@ -94,10 +94,16 @@
     </script>
 	
     <script>
+        function showHideLoaderTimeout() {
+            showHideLoader('close'); // Hide Loader
+        }
+
         // Load App iframe
         let loadAppIframeFunc = (iframeURL) => {
             let parentSelectorContainer = 'homePageSwitchAppsContainer';
             showHideLoader('open'); // Show Loader
+
+            const setShowHideLoaderTimeout = setTimeout(showHideLoaderTimeout, 1000);
 
             let htmlContent = `
                 <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
@@ -105,7 +111,8 @@
             document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
 
             document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
-                showHideLoader('close'); // Hide Loader
+                showHideLoader('close');
+                clearTimeout(setShowHideLoaderTimeout);
             };
         }
 

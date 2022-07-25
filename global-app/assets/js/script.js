@@ -16,20 +16,20 @@ let showHideLoader = (status) => {
 let placeholderHTML = `
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; background: #000000;">
     <div class="materialPlaceHolder" style="width: 40%; height:60px; margin-top: 5rem;"></div>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; padding: 2rem 14rem; width: 100%;">
-        <div id="" data-button="" class="materialCard" style="width:40%; margin:2rem; box-sizing:border-box;">
+    <div class="materialPlaceHolderDiv">
+        <div id="" data-button="" class="materialCard" style="">
             <div class="materialCardImg materialPlaceHolder"></div>
             <div class="content materialPlaceHolder" style="margin-top:4px; height:55px;"></div>
         </div>
-        <div id="" data-button="" class="materialCard" style="width:40%; margin:2rem; box-sizing:border-box;">
+        <div id="" data-button="" class="materialCard" style="">
             <div class="materialCardImg materialPlaceHolder"></div>
             <div class="content materialPlaceHolder" style="margin-top:4px; height:55px;"></div>
         </div>
-        <div id="" data-button="" class="materialCard" style="width:40%; margin:2rem; box-sizing:border-box;">
+        <div id="" data-button="" class="materialCard" style="">
             <div class="materialCardImg materialPlaceHolder"></div>
             <div class="content materialPlaceHolder" style="margin-top:4px; height:55px;"></div>
         </div>
-        <div id="" data-button="" class="materialCard" style="width:40%; margin:2rem; box-sizing:border-box;">
+        <div id="" data-button="" class="materialCard" style="">
             <div class="materialCardImg materialPlaceHolder"></div>
             <div class="content materialPlaceHolder" style="margin-top:4px; height:55px;"></div>
         </div>
@@ -64,7 +64,7 @@ document.querySelector('.materialFloatingButtonContainer .materialFloatingLinkBu
 
 // Call Ajax Function
 const callAjaxFunc = (formData, callback) => {
-    showHidePlaceHolder('open'); // Show Loader
+    showHidePlaceHolder('open'); // Show PlaceHolder
     $.ajax({
         dataType: "text", //To avoid parsing of JSON
         url: "https://pianoencyclopedia.com/en/app-generic/global/", 
