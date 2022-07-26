@@ -195,7 +195,7 @@ let renderAppFunc = (appJSONData) => {
 
     let htmlContent = `
         <div><h2 class="materialHeader fontFamilyOptimus">${appJSONData.home.title}</h2></div>
-        <div class="elementSeparatorOrnament"><img src="assets/img/Separator.min.png" alt=""></div>
+        <div class="elementSeparatorOrnament"><img src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-global/img/Separator.min.png" alt=""></div>
         <div class="homePageSwitchAppsDiv">${appDivContent}</div>
     `;
     showHidePlaceHolder('close'); // Hide PlaceLoader
