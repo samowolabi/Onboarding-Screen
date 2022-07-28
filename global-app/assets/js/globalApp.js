@@ -123,12 +123,19 @@ let openLightBox = (htmlContent) => {
 // Open App Details in Modal
 let openAppDetails = (thisElement) => {
     let appButtonLinkFunc = () => { 
-        if(thisElement.getAttribute('data-status') === 'locked') {
-            return `
-                <button class="materialButtonOutline materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Read More</button>
-                <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-orderUrl')}')" data-value="close">Order Now</button>
-            `;
-        } else {
+        if(userLoggedIn) {
+            if(thisElement.getAttribute('data-status') === 'locked') {
+                return `
+                    <button class="materialButtonOutline materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-salesUrl')}')" data-value="close">Read More</button>
+                    <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-orderUrl')}')" data-value="close">Order Now</button>
+                `;
+            } else {
+                return `
+                    <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-url')}')" data-value="close">Start Learning</button>
+                `;
+            }
+        }
+        if(!userLoggedIn) {
             return `
                 <button class="materialButtonFill materialThemeDark" onclick="loadAppIframeFunc('${thisElement.getAttribute('data-url')}')" data-value="close">Start Learning</button>
             `;
