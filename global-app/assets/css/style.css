@@ -276,11 +276,14 @@
     } 
 
     @media only screen and (min-width: 820px) and (max-width: 1024px) {
+        .homePageSwitchAppsContainer {
+            align-items: normal;
+        }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv {
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
         }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
-            width: 87%;
+            width: 85%;
         }
     }
 
