@@ -65,7 +65,7 @@ const callAjaxFunc = (formData, callback) => {
     showHidePlaceHolder('open'); // Show PlaceHolder
     $.ajax({
         dataType: "text", //To avoid parsing of JSON
-        url: "https://pianoencyclopedia.com/en/app-generic/global/", 
+        url: "https://pianoencyclopedia.com/en/app-global/server/", 
         cache: false, 
         type: "POST",
         crossDomain: true,
@@ -246,8 +246,21 @@ let formData = {
 
 // Go Home
 let backToHomeFunc = () => {
+        materialDialog.question("Please confirm.", "Would you like to go to the home screen?",{
+            "buttonNo":{
+                caption: "No",
+                additional: "data-value='close'"
+            },
+            "buttonYes":{
+                caption: "Yes",
+                href:`javascript: callAjaxFunc(formData, fetchedResponseCallback)`,
+                //href:`javascript: ${alert()}`,
+                additional: "data-value='close'"
+            }
+    })
+
     // Call Ajax Function to fetch Apps Content
-    callAjaxFunc(formData, fetchedResponseCallback);
+    //callAjaxFunc(formData, fetchedResponseCallback);
 }
 
 // loginLogOutFunc()
