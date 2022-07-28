@@ -275,13 +275,16 @@
         padding: 1rem 0;
     } 
 
-    @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    @media only screen and (min-width: 820px) and (max-width: 1024px) {
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv {
             padding: 3rem 2rem;
         }
+        .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
+            width: 87%;
+        }
     }
 
-    @media only screen and (min-width: 320px) and (max-width: 480px) {
+    @media only screen and (min-width: 320px) and (max-width: 820px) {
         .homePageSwitchAppsContainer .elementSeparatorOrnament img {
             width: 300px;
             max-width: 100%;
@@ -296,7 +299,7 @@
         }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div {
             margin: 0;
-            margin-top: 2rem;
+            margin-bottom: 3rem;
             width: 87%;
         }
         .homePageSwitchAppsContainer .homePageSwitchAppsDiv > div h3 {
