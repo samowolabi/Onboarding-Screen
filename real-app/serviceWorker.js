@@ -2,6 +2,7 @@ const staticPianoEncyclopedia = "pianoencyclopedia-global-v1"
 const assets = [
     "/",
     "/index.html",
+    "/app.js",
     "/logo-transparent-BG.png",
     "/icons/icon-192x192.png",
     "/icons/icon-256x256.png",
