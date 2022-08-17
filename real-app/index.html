@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-            navigator.serviceWorker
-            .register("serviceWorker.js")
-            .then(res => console.log("service worker registered"))
-            .catch(err => console.log("service worker not registered", err))
-        })
-        }
-    </script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,46 +75,4 @@
             <img src="https://learn.pianoencyclopedia.com/hydra/HydraCreator/live-editor/modules-assets/app-global/img/logo-transparent-BG.png" alt="">
         </div>
     </div> 
-
-    <div class="globalAppContainer"></div>
-    <script>
-        // Loader Function
-        let showHideLoader = (status) => {
-            if(status === 'open') {
-                document.querySelector('body').style.overflow = "hidden";
-                document.querySelector('.loadingIconContainer').classList.add('active');
-            }
-            if(status === 'close') {
-                document.querySelector('body').style.removeProperty('overflow');
-                document.querySelector('.loadingIconContainer').classList.remove('active');
-            }
-        }
-
-        // Hide Loader on setTimeout
-        let showHideLoaderTimeout = () => {
-            showHideLoader('close'); // Hide Loader
-        }
-
-        // Load App iframe
-        let loadAppIframeFunc = (iframeURL, parentSelectorContainer) => {
-            showHideLoader('open'); // Show Loader
-
-            const setShowHideLoaderTimeout = setTimeout(showHideLoaderTimeout, 1000);
-
-            let htmlContent = `
-                <iframe src="${iframeURL}" title="The Piano Encyclopedia Global App"></iframe>
-            `;
-            document.querySelector('.' + parentSelectorContainer).innerHTML = htmlContent;
-
-            document.querySelector('.' + parentSelectorContainer + ' iframe').onload = () => {
-                console.log("iframe loaded");
-                showHideLoader('close'); // Hide Loader
-                clearTimeout(setShowHideLoaderTimeout);
-            };
-        }
-
-        //loadAppIframeFunc('../global-app/index.html', 'globalAppContainer');
-        loadAppIframeFunc('https://pianoencyclopedia.com/en/app-global/', 'globalAppContainer'); 
-    </script> 
-</body>
 </html>
