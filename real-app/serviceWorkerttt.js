@@ -7,7 +7,7 @@ const assets = [
     "/icons/icon-256x256.png",
     "/icons/icon-384x384.png",
     "/icons/icon-512x512.png"
-]
+]  
 
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
