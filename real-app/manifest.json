@@ -1,0 +1,32 @@
+{
+    "theme_color": "#db4938",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/index.html",
+    "name": "The Piano Encyclopedia Global App",
+    "short_name": "The Piano Encyclopedia",
+    "description": "Learn how to play the piano by discovering the logic behind music. Play your favorite songs, improvise, play by ear, and create your own music!",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
