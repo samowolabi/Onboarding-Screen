@@ -7,11 +7,14 @@ if ("serviceWorker" in navigator) {
     })
 }
 
-const relatedApps = await navigator.getInstalledRelatedApps();
-relatedApps.forEach((app) => {
-  console.log(app.id, app.platform, app.url);
-});
 
+const checkIfPWAAppIsInstalled = async() => {
+    const relatedApps = await navigator.getInstalledRelatedApps();
+    relatedApps.forEach((app) => {
+    console.log(app.id, app.platform, app.url);
+    });
+}
+checkIfPWAAppIsInstalled();
 
 
 // let outcomeText = '';
