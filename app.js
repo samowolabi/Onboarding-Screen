@@ -9,10 +9,55 @@ if ("serviceWorker" in navigator) {
 
 let showInstallPromotion = () => {
     let html = `
-        <div style="opacity:1; transition: 0.6s; width: 100%; background-color:#F5BD41; position:fixed; z-index: 90; left:0; bottom:0; padding: 1.4rem 0; height: auto; display: flex; flex-direction: column; align-items: center;">
+        <style>
+            .promotionBarDiv {
+                opacity:1; 
+                transition: 0.6s; 
+                width: 100%; 
+                background-color:#F5BD41; 
+                position:fixed; 
+                z-index: 90; 
+                left:0; 
+                bottom:0; 
+                padding: 1.4rem 0; 
+                height: auto; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center;
+            }
+
+            .installPromotionButton {
+                cursor: pointer;
+                padding: 1.35rem 5rem;
+                background-color: #000000;
+                color: #ffffff;
+                border: 0;
+                border-radius: 40px;
+                margin-bottom: 1rem;
+                font-weight: 600;
+                font-size: 1.1em;
+                transition: 0.35s;
+            }
+
+            .hideInstallPromotionButton {
+                cursor: pointer;
+                padding: 0.75rem 3.25rem;
+                background: transparent;
+                color: #4e3600;
+                border: 0;
+                font-weight: bold;
+                transition: 0.35s;
+            }
+
+            .installPromotionButton:hover, .hideInstallPromotionButton:hover {
+                opacity: 70%;
+            }
+        </style>
+
+        <div class="promotionBarDiv">
             <h1 style="text-align:center;">Easily access The Piano Encyclopedia!</h1>
-            <button onClick="installPWAApp()" style="cursor: pointer; padding: 1.35rem 5rem; background-color: #000000; color: #ffffff; border: 0; border-radius: 40px; margin-bottom: 1rem; font-weight: 600; ">Install</button>
-            <button onClick="hideInstallPromotion()" style="cursor: pointer; padding: 0.75rem 3.25rem; background: rgba(255, 255, 255, 0.2); color: #000000; border: 0;">Not Now</button>
+            <button class="installPromotionButton" onclick="installPWAApp()">Install</button>
+            <button class="hideInstallPromotionButton" onclick="hideInstallPromotion()">Not Now</button>
         </div>
     `;
     document.querySelector('.installPromotionDiv').innerHTML = html;
