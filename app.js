@@ -12,7 +12,7 @@ let showInstallPromotion = () => {
         <div style="opacity:1; transition: 0.6s; width: 100%; background-color:#F5BD41; position:fixed; z-index: 90; left:0; bottom:0; padding: 1.4rem 0; height: auto; display: flex; flex-direction: column; align-items: center;">
             <h1 style="text-align:center;">Easily access The Piano Encyclopedia!</h1>
             <button onClick="installPWAApp()" style="cursor: pointer; padding: 1.35rem 5rem; background-color: #000000; color: #ffffff; border: 0; border-radius: 40px; margin-bottom: 1rem; font-weight: 600; ">Install</button>
-            <button onClick="hideInstallPromotion()" style="cursor: pointer; padding: 0.75rem 3.25rem; background: none; color: #000000; border: 0;">Not Now</button>
+            <button onClick="hideInstallPromotion()" style="cursor: pointer; padding: 0.75rem 3.25rem; background: rgba(255, 255, 255, 0.2); color: #000000; border: 0;">Not Now</button>
         </div>
     `;
     document.querySelector('.installPromotionDiv').innerHTML = html;
