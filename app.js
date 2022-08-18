@@ -71,7 +71,7 @@ let showInstallPromotionInterval = () => {
         showInstallPromotion();
     }
 }
-const setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
+let setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
 
 
 
