@@ -72,9 +72,17 @@ let hideInstallPromotion = () => {
     element.addEventListener('webkitTransitionend', function(event) {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
-
-    const showInstallPromotionInterval = setInterval(showInstallPromotion, 5000);
 }
+
+// Show Install Promtion Bar
+let showInstallPromotionInterval = () => {
+    if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
+    } else {
+        showInstallPromotion();
+    }
+}
+setInterval(showInstallPromotionInterval, 10000);
+
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
@@ -91,6 +99,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
  
 const installPWAApp = async() => {
+    // Hide 
+    clearInterval(showInstallPromotionInterval);
     // Hide the app provided install promotion
     hideInstallPromotion();
     // Show the install prompt
