@@ -76,8 +76,6 @@ let hideInstallPromotion = () => {
     const showInstallPromotionInterval = setInterval(showInstallPromotion, 5000);
 }
 
-const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
-
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
 
