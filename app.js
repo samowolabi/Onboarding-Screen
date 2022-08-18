@@ -55,7 +55,7 @@ let showInstallPromotion = () => {
         </style>
 
         <div class="promotionBarDiv">
-            <h1 style="text-align:center;">Easily access The Piano Encyclopedia!</h1>
+            <h1 style="text-align:center;">Add The Piano Encyclopedia to Home Screen</h1>
             <button class="installPromotionButton" onclick="installPWAApp()">Install</button>
             <button class="hideInstallPromotionButton" onclick="hideInstallPromotion()">Not Now</button>
         </div>
@@ -72,7 +72,11 @@ let hideInstallPromotion = () => {
     element.addEventListener('webkitTransitionend', function(event) {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
+
+    const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
 }
+
+const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
