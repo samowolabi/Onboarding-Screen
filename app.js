@@ -63,6 +63,18 @@ let showInstallPromotion = () => {
     document.querySelector('.installPromotionDiv').innerHTML = html;
 }
 
+
+// Show Install Promtion Bar on Interval
+let showInstallPromotionInterval = () => {
+    if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
+    } else {
+        showInstallPromotion();
+    }
+}
+const setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
+
+
+
 let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
@@ -72,16 +84,10 @@ let hideInstallPromotion = () => {
     element.addEventListener('webkitTransitionend', function(event) {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
-}
 
-// Show Install Promtion Bar
-let showInstallPromotionInterval = () => {
-    if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
-    } else {
-        showInstallPromotion();
-    }
+    clearInterval(setShowInstallPromotionInterval);
+    setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
 }
-setInterval(showInstallPromotionInterval, 10000);
 
 
 // Initialize deferredPrompt for use later to show browser install prompt.
