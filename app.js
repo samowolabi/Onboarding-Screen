@@ -71,7 +71,7 @@ let showInstallPromotionInterval = () => {
         showInstallPromotion();
     }
 }
-let setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
+//let setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
 
 
 
@@ -85,8 +85,8 @@ let hideInstallPromotion = () => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    clearInterval(setShowInstallPromotionInterval);
-    setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
+    //clearInterval(setShowInstallPromotionInterval);
+    //setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
 }
 
 
@@ -105,15 +105,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
  
 const installPWAApp = async() => {
-    // Hide 
-    clearInterval(showInstallPromotionInterval);
     // Hide the app provided install promotion
     hideInstallPromotion();
     // Show the install prompt
     deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
-    console.log(outcome);
     // Optionally, send analytics event with outcome of user choice
     console.log(`User response to the install prompt: ${outcome}`);
     // We've used the prompt, and can't use it again, throw it away
