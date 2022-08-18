@@ -73,7 +73,7 @@ let hideInstallPromotion = () => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
+    const showInstallPromotionInterval = setInterval(showInstallPromotion, 5000);
 }
 
 const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
