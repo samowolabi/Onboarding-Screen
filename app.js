@@ -88,8 +88,19 @@ let showInstallPromotion = () => {
     document.querySelector('.installPromotionDiv').innerHTML = html;
 }
 
+var showInstallPromotionInterval;
+var installPromotionHiddenBefore = false;
 
-let hideInstallPromotion = (state) => {
+let showInstallPromotionIntervalFunc = () => {
+    if(!installPromotionHiddenBefore) {
+        showInstallPromotionInterval = setInterval(function() {showInstallPromotion()}, 5000);
+    } else {
+        clearInterval(showInstallPromotionInterval);
+        showInstallPromotionInterval = setInterval(function() {showInstallPromotion()}, 5000);
+    }
+}
+
+let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
     element.addEventListener('transitionend', function(event) {
@@ -99,7 +110,7 @@ let hideInstallPromotion = (state) => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    setInterval(function() {showInstallPromotion()}, 5000);
+    showInstallPromotionIntervalFunc()
 }
 
 
