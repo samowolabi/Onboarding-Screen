@@ -7,6 +7,8 @@ if ("serviceWorker" in navigator) {
     })
 }
 
+var displayMode = null;
+
 
 // const checkIfPWAAppIsInstalled = async() => {
 //     const relatedApps = await navigator.getInstalledRelatedApps();
@@ -91,6 +93,7 @@ let showInstallPromotion = () => {
 
 let showInstallPromotionIntervalFunc = () => {
     console.log(new Date().toUTCString());
+    console.log(displayMode);
     if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
     } else {
         showInstallPromotion();
@@ -147,7 +150,6 @@ const installPWAApp = async() => {
     deferredPrompt = null;
 }
 
-
 if(window.matchMedia){
 	function getPWADisplayMode() {
 	  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -162,7 +164,7 @@ if(window.matchMedia){
 	console.log("Display mode:" + getPWADisplayMode());
 
 	window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-	  let displayMode = 'browser';
+	  displayMode = 'browser';
 	  if (evt.matches) {
 		displayMode = 'standalone';
 	  }
