@@ -90,6 +90,7 @@ let showInstallPromotion = () => {
 
 
 let showInstallPromotionIntervalFunc = () => {
+    console.log(new Date().toUTCString());
     if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
     } else {
         showInstallPromotion();
