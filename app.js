@@ -95,6 +95,7 @@ let showInstallPromotionIntervalFunc = () => {
         showInstallPromotion();
     }
 }
+var myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
 
 let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
@@ -106,7 +107,8 @@ let hideInstallPromotion = () => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    setInterval(showInstallPromotionIntervalFunc, 5000);
+    clearInterval(myTimer);
+    myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
 }
 
 
