@@ -8,13 +8,13 @@ if ("serviceWorker" in navigator) {
 }
 
 
-const checkIfPWAAppIsInstalled = async() => {
-    const relatedApps = await navigator.getInstalledRelatedApps();
-    relatedApps.forEach((app) => {
-        console.log(app.id, app.platform, app.url);
-    });
-}
-checkIfPWAAppIsInstalled();
+// const checkIfPWAAppIsInstalled = async() => {
+//     const relatedApps = await navigator.getInstalledRelatedApps();
+//     relatedApps.forEach((app) => {
+//         console.log(app.id, app.platform, app.url);
+//     });
+// }
+// checkIfPWAAppIsInstalled();
 
 
 // let outcomeText = '';
@@ -89,7 +89,7 @@ let showInstallPromotion = () => {
 }
 
 
-let hideInstallPromotion = () => {
+let hideInstallPromotion = (state) => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
     element.addEventListener('transitionend', function(event) {
@@ -98,6 +98,8 @@ let hideInstallPromotion = () => {
     element.addEventListener('webkitTransitionend', function(event) {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
+
+    setInterval(function() {showInstallPromotion()}, 5000);
 }
 
 
@@ -112,6 +114,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   console.log(e);
    // Optionally, send analytics event that PWA install promo was shown.
   //console.log(`'beforeinstallprompt' event was fired.`);
+  
   // Update UI notify the user they can install the PWA
   showInstallPromotion();
 });
