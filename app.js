@@ -94,12 +94,18 @@ let showInstallPromotion = () => {
 let showInstallPromotionIntervalFunc = () => {
     console.log(new Date().toUTCString());
     console.log(displayMode);
-    if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
-    } else {
-        showInstallPromotion();
+
+    if((displayMode == null) || (displayMode == 'browser')){
+        if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
+        } else {
+            showInstallPromotion();
+        }
     }
+    // else if(displayMode == 'standalone') {
+
+    // }
 }
-var myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
+var myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
 
 let hideInstallPromotion = (state) => {
     let element = document.querySelector('.installPromotionDiv > div')
@@ -113,7 +119,7 @@ let hideInstallPromotion = (state) => {
 
     if(state = 'notInstalled') {
         clearInterval(myTimer);
-        myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
+        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
     } else {
         clearInterval(myTimer);
     }
@@ -170,6 +176,5 @@ if(window.matchMedia){
 	  }
 	  // Log display mode change to analytics
 	  console.log('DISPLAY_MODE_CHANGED', displayMode);
-      hideInstallPromotion('');
-	});
+    });
 }
