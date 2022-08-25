@@ -7,31 +7,6 @@ if ("serviceWorker" in navigator) {
     })
 }
 
-
-const checkIfPWAAppIsInstalled = async() => {
-    const relatedApps = await navigator.getInstalledRelatedApps();
-    relatedApps.forEach((app) => {
-        console.log(app.id, app.platform, app.url);
-    });
-}
-checkIfPWAAppIsInstalled();
-
-
-// let outcomeText = '';
-
-// // Show Install Promtion Bar on Interval
-// let showInstallPromotionInterval = () => {
-//     if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
-//     } else {
-//         showInstallPromotion();
-//     }
-// }
-// let setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
- 
-// clearInterval(setShowInstallPromotionInterval);
-// setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
-
-
 let showInstallPromotion = () => {
     let html = `
         <style>
@@ -88,7 +63,6 @@ let showInstallPromotion = () => {
     document.querySelector('.installPromotionDiv').innerHTML = html;
 }
 
-
 let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
@@ -98,8 +72,11 @@ let hideInstallPromotion = () => {
     element.addEventListener('webkitTransitionend', function(event) {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
+
+    const showInstallPromotionInterval = setInterval(showInstallPromotion, 5000);
 }
 
+const showInstallPromotionInterval = setTimeout(showInstallPromotion, 5000);
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
@@ -109,13 +86,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-  console.log(e);
-   // Optionally, send analytics event that PWA install promo was shown.
-  //console.log(`'beforeinstallprompt' event was fired.`);
   // Update UI notify the user they can install the PWA
   showInstallPromotion();
+  // Optionally, send analytics event that PWA install promo was shown.
+  console.log(`'beforeinstallprompt' event was fired.`);
 });
-
  
 const installPWAApp = async() => {
     // Hide the app provided install promotion
@@ -129,7 +104,6 @@ const installPWAApp = async() => {
     // We've used the prompt, and can't use it again, throw it away
     deferredPrompt = null;
 }
-
 
 if(window.matchMedia){
 	function getPWADisplayMode() {
