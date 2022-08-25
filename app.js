@@ -82,7 +82,7 @@ let showInstallPromotion = () => {
         <div class="promotionBarDiv">
             <h1 style="text-align:center;">Add The Piano Encyclopedia to Home Screen</h1>
             <button class="installPromotionButton" onclick="installPWAApp()">Install</button>
-            <button class="hideInstallPromotionButton" onclick="hideInstallPromotion()">Not Now</button>
+            <button class="hideInstallPromotionButton" onclick="hideInstallPromotion('notInstalled')">Not Now</button>
         </div>
     `;
     document.querySelector('.installPromotionDiv').innerHTML = html;
@@ -98,7 +98,7 @@ let showInstallPromotionIntervalFunc = () => {
 }
 var myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
 
-let hideInstallPromotion = () => {
+let hideInstallPromotion = (state) => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
     element.addEventListener('transitionend', function(event) {
@@ -108,8 +108,12 @@ let hideInstallPromotion = () => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    clearInterval(myTimer);
-    myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
+    if(state = 'notInstalled') {
+        clearInterval(myTimer);
+        myTimer = setInterval(showInstallPromotionIntervalFunc, 5000);
+    } else {
+        clearInterval(myTimer);
+    }
 }
 
 
@@ -132,7 +136,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
  
 const installPWAApp = async() => {
     // Hide the app provided install promotion
-    hideInstallPromotion();
+    hideInstallPromotion('notInstalled');
     // Show the install prompt
     deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
@@ -164,5 +168,6 @@ if(window.matchMedia){
 	  }
 	  // Log display mode change to analytics
 	  console.log('DISPLAY_MODE_CHANGED', displayMode);
+      hideInstallPromotion('');
 	});
 }
