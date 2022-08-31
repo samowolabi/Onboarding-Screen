@@ -105,7 +105,6 @@ let showInstallPromotionIntervalFunc = () => {
 
     // }
 }
-var myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
 
 let hideInstallPromotion = (state) => {
     let element = document.querySelector('.installPromotionDiv > div')
@@ -129,18 +128,26 @@ let hideInstallPromotion = (state) => {
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  console.log(e);
-   // Optionally, send analytics event that PWA install promo was shown.
-  //console.log(`'beforeinstallprompt' event was fired.`);
-  
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-});
+let openShowInstallPromptFunc = async () => {
+    let beforeInstallPromptEventListenerCalled = false;
+    await window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        console.log(e);
+         // Optionally, send analytics event that PWA install promo was shown.
+        //console.log(`'beforeinstallprompt' event was fired.`);
+        
+        // Update UI notify the user they can install the PWA
+        showInstallPromotion();
+        beforeInstallPromptEventListenerCalled = true;
+    });
+    if(!beforeInstallPromptEventListenerCalled){var myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);}
+}
+
+openShowInstallPromptFunc();
+
 
  
 const installPWAApp = async() => {
