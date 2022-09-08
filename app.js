@@ -109,6 +109,7 @@ let hideInstallPromotion = (state) => {
 var deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
+    alert('Prompt is called');
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
   // Stash the event so it can be triggered later.
