@@ -9,31 +9,6 @@ if ("serviceWorker" in navigator) {
 
 var displayMode = null;
 
-
-// const checkIfPWAAppIsInstalled = async() => {
-//     const relatedApps = await navigator.getInstalledRelatedApps();
-//     relatedApps.forEach((app) => {
-//         console.log(app.id, app.platform, app.url);
-//     });
-// }
-// checkIfPWAAppIsInstalled();
-
-
-// let outcomeText = '';
-
-// // Show Install Promtion Bar on Interval
-// let showInstallPromotionInterval = () => {
-//     if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
-//     } else {
-//         showInstallPromotion();
-//     }
-// }
-// let setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
- 
-// clearInterval(setShowInstallPromotionInterval);
-// setShowInstallPromotionInterval = setInterval(showInstallPromotionInterval, 10000);
-
-
 let showInstallPromotion = () => {
     let html = `
         <style>
@@ -51,6 +26,14 @@ let showInstallPromotion = () => {
                 display: flex; 
                 flex-direction: column; 
                 align-items: center;
+            }
+
+            @media only screen 
+            and (min-width: 320px) 
+            and (max-width: 480px) {
+                .promotionBarDiv {
+                    padding: 1.4rem 1rem; 
+                }
             }
 
             .installPromotionButton {
@@ -92,21 +75,16 @@ let showInstallPromotion = () => {
 
 
 let showInstallPromotionIntervalFunc = () => {
-    console.log(new Date().toUTCString());
-    console.log(displayMode);
-
     if((displayMode == null) || (displayMode == 'browser')){
         if (typeof(document.querySelector('.promotionBarDiv')) != 'undefined' && document.querySelector('.promotionBarDiv') != null){
         } else {
             showInstallPromotion();
         }
     }
-    // else if(displayMode == 'standalone') {
-
-    // }
 }
 
 var myTimer;
+var count = 0;
 
 let hideInstallPromotion = (state) => {
     let element = document.querySelector('.installPromotionDiv > div')
@@ -135,15 +113,18 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-  console.log(e);
-  console.log('I am being called');
+  //console.log('I am being called');
    // Optionally, send analytics event that PWA install promo was shown.
   //console.log(`'beforeinstallprompt' event was fired.`);
   
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-
-  myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+    if(count === 0) {
+        // Update UI notify the user they can install the PWA
+        showInstallPromotion();
+        count++
+    } else {
+        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+    }
+  
 });
 
  

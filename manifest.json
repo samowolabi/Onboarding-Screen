@@ -4,7 +4,7 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/index.html",
-    "name": "The Piano Encyclopedia Global App",
+    "name": "The Piano Encyclopedia",
     "short_name": "The Piano Encyclopedia",
     "description": "Learn how to play the piano by discovering the logic behind music. Play your favorite songs, improvise, play by ear, and create your own music!",
     "icons": [
