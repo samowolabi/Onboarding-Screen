@@ -146,6 +146,8 @@ if (isIos() && !isInStandaloneMode()) {
     } else {
         myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
     }
+} else {
+    alert('Prompt is not called');
 }
 
  
