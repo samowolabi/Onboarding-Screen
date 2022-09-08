@@ -21,43 +21,41 @@ let showInstallPromotionIOS = () => {
             .iosNotificationBarDiv {
                 width: 100%;
                 position: absolute;
+                z-index: 50;
                 bottom: 50px;
                 font-family: Arial, sans-serif;
             }
             .iosNotificationBar {
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
                 color: #000000;
                 background: rgba(255, 255, 255, 1);
                 border-radius: 16px;
-                padding: 0.75rem;
+                padding: 1rem;
                 position: relative;
-
             }
             .iosNotificationBar::before {
                 content: '';
                 position: absolute;
                 top: 80%;
-                left: 50%;
+                left: 48%;
                 transform: rotate(45deg);
                 background-color: #ffffff;
-                padding: 8.75px;
+                padding: 10px;
                 z-index: 1;
             }
         </style>
 
         <div class="iosNotificationBarDiv">
             <div class="iosNotificationBar">
-                <!--<div>
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_3195_982)"><path d="M19.44 8.8999C23.04 9.2099 24.51 11.0599 24.51 15.1099V15.2399C24.51 19.7099 22.72 21.4999 18.25 21.4999H11.74C7.26998 21.4999 5.47998 19.7099 5.47998 15.2399V15.1099C5.47998 11.0899 6.92998 9.2399 10.47 8.9099" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 2V14.88" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.35 12.6499L15 15.9999L11.65 12.6499" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><filter id="filter0_d_3195_982" x="-1" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3195_982"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3195_982" result="shape"/></filter></defs></svg>
-                </div>-->
-                <div>Install Piano Encyclopedia on your phone: Tap</div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="#4693FE" viewBox="0 0 50 50" enable-background="new 0 0 50 50"><path d="M30.3 13.7L25 8.4l-5.3 5.3-1.4-1.4L25 5.6l6.7 6.7z"/><path d="M24 7h2v21h-2z"/><path d="M35 40H15c-1.7 0-3-1.3-3-3V19c0-1.7 1.3-3 3-3h7v2h-7c-.6 0-1 .4-1 1v18c0 .6.4 1 1 1h20c.6 0 1-.4 1-1V19c0-.6-.4-1-1-1h-7v-2h7c1.7 0 3 1.3 3 3v18c0 1.7-1.3 3-3 3z"/></svg>
+                    Install Piano Encyclopedia on your phone: Tap
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="31" style="margin-bottom:-12px" fill="#4693FE" viewBox="0 0 50 50" enable-background="new 0 0 50 50"><path d="M30.3 13.7L25 8.4l-5.3 5.3-1.4-1.4L25 5.6l6.7 6.7z"/><path d="M24 7h2v21h-2z"/><path d="M35 40H15c-1.7 0-3-1.3-3-3V19c0-1.7 1.3-3 3-3h7v2h-7c-.6 0-1 .4-1 1v18c0 .6.4 1 1 1h20c.6 0 1-.4 1-1V19c0-.6-.4-1-1-1h-7v-2h7c1.7 0 3 1.3 3 3v18c0 1.7-1.3 3-3 3z"/></svg>
+                    and then add to your homescreen.
                 </div>
-                <div>
-                    and then add to your homescreen
+                <div style="margin-left: 0.25rem" onclick="() => {document.querySelector('.iosNotificationBarDiv').style.display='none'; alert();}">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L22.8627 22.5627" stroke="#51526C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.8623 1.5L1.49961 22.5627" stroke="#51526C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
             </div>
         </div>
