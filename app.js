@@ -109,7 +109,6 @@ let hideInstallPromotion = (state) => {
 var deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    alert('Prompt is called');
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
   // Stash the event so it can be triggered later.
@@ -125,8 +124,29 @@ window.addEventListener('beforeinstallprompt', (e) => {
     } else {
         myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
     }
-  
 });
+
+
+// Detects if device is on iOS 
+const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+}
+// Detects if device is in standalone mode
+const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+// Checks if should display install popup notification:
+if (isIos() && !isInStandaloneMode()) {
+    alert('Prompt is called');
+  
+    if(count === 0) {
+        // Update UI notify the user they can install the PWA
+        showInstallPromotion();
+        count++
+    } else {
+        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+    }
+}
 
  
 const installPWAApp = async() => {
