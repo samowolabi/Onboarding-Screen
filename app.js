@@ -26,7 +26,7 @@ let showInstallPromotionIOS = () => {
                 width: 100%;
                 position: absolute;
                 z-index: 50;
-                bottom: 50px;
+                bottom: 40px;
                 font-family: Arial, sans-serif;
             }
             .iosNotificationBar {
