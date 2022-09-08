@@ -7,7 +7,44 @@ if ("serviceWorker" in navigator) {
     })
 }
 
+// Detects if device is on iOS 
+const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+}
+
 var displayMode = null;
+
+let showInstallPromotionIOS = () => {
+    let html = `
+        <style>
+            .iosNotificationBarDiv {
+                width: 100%;
+                padding: 1rem;
+            }
+            .iosNotificationBarDiv {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(8.1px);
+                -webkit-backdrop-filter: blur(8.1px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+
+            }
+        </style>
+
+        <div class="iosNotificationBarDiv">
+            <div class="iosNotificationBarDiv">
+                <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_3195_982)"><path d="M19.44 8.8999C23.04 9.2099 24.51 11.0599 24.51 15.1099V15.2399C24.51 19.7099 22.72 21.4999 18.25 21.4999H11.74C7.26998 21.4999 5.47998 19.7099 5.47998 15.2399V15.1099C5.47998 11.0899 6.92998 9.2399 10.47 8.9099" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 2V14.88" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.35 12.6499L15 15.9999L11.65 12.6499" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><filter id="filter0_d_3195_982" x="-1" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3195_982"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3195_982" result="shape"/></filter></defs></svg>
+                Install Piano Encyclopedia on your phone: Tap
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" enable-background="new 0 0 50 50"><path d="M30.3 13.7L25 8.4l-5.3 5.3-1.4-1.4L25 5.6l6.7 6.7z"/><path d="M24 7h2v21h-2z"/><path d="M35 40H15c-1.7 0-3-1.3-3-3V19c0-1.7 1.3-3 3-3h7v2h-7c-.6 0-1 .4-1 1v18c0 .6.4 1 1 1h20c.6 0 1-.4 1-1V19c0-.6-.4-1-1-1h-7v-2h7c1.7 0 3 1.3 3 3v18c0 1.7-1.3 3-3 3z"/></svg>
+                and then add to your homescreen
+            </div>
+        </div>
+    `;
+    document.querySelector('.installPromotionDiv').innerHTML = html;
+}
 
 let showInstallPromotion = () => {
     let html = `
@@ -109,45 +146,32 @@ let hideInstallPromotion = (state) => {
 var deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  //console.log('I am being called');
-   // Optionally, send analytics event that PWA install promo was shown.
-  //console.log(`'beforeinstallprompt' event was fired.`);
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    //console.log('I am being called');
+    // Optionally, send analytics event that PWA install promo was shown.
+    //console.log(`'beforeinstallprompt' event was fired.`);
   
-    if(count === 0) {
-        // Update UI notify the user they can install the PWA
-        showInstallPromotion();
-        count++
-    } else {
-        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+    if(!isIos()){
+        if(count === 0) {
+            // Update UI notify the user they can install the PWA
+            showInstallPromotion();
+            count++
+        } else {
+            myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+        }
     }
 });
 
 
-// Detects if device is on iOS 
-const isIos = () => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
-}
 // Detects if device is in standalone mode
 const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
 // Checks if should display install popup notification:
 if (isIos() && !isInStandaloneMode()) {
-    alert('Prompt is called');
-  
-    if(count === 0) {
-        // Update UI notify the user they can install the PWA
-        showInstallPromotion();
-        count++
-    } else {
-        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
-    }
-} else {
-    alert('Prompt is not called');
+    showInstallPromotionIOS();
 }
 
  
