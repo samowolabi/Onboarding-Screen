@@ -162,20 +162,17 @@ let hideInstallPromotion = () => {
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
-//var showInstallPromotionAtLoadCount = 0;  
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    //console.log('I am being called');
     // Optionally, send analytics event that PWA install promo was shown.
     //console.log(`'beforeinstallprompt' event was fired.`);
   
     if(!isIos()) {
         showInstallPromotionIntervalFunc();
-        //showInstallPromotionAtLoadCount = 1;
     }
 });
 
