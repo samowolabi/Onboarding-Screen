@@ -157,11 +157,11 @@ let hideInstallPromotion = () => {
     if(myTimer !== null) {
         clearInterval(myTimer);
     }
-    myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+    myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
 
     // if(state = 'notInstalled') {
     //     clearInterval(myTimer);
-    //     myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+    //     myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
     // } else {
     //     clearInterval(myTimer);
     // }
@@ -189,7 +189,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     //         showInstallPromotion();
     //         count++
     //     } else {
-    //         myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+    //         myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
     //     }
     // }
 });
