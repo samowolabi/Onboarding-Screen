@@ -162,6 +162,7 @@ let hideInstallPromotion = () => {
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
+//var showInstallPromotionAtLoadCount = 0;  
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -174,6 +175,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   
     if(!isIos()) {
         showInstallPromotion();
+        //showInstallPromotionAtLoadCount = 1;
     }
 });
 
@@ -194,10 +196,12 @@ const installPWAApp = async() => {
     const { outcome } = await deferredPrompt.userChoice;
     // Optionally, send analytics event with outcome of user choice
     console.log(`User response to the install prompt: ${outcome}`);
+    console.log(typeof outcome);
 
-   if(outcome == 'dismissed') {
-        hideInstallPromotion(); // Hide the app provided install promotion
-    }
+    // if(outcome = 'dismissed') {
+    //     // Hide the app provided install promotion
+    //     hideInstallPromotion();
+    // }
 
     // We've used the prompt, and can't use it again, throw it away
     deferredPrompt = null;
