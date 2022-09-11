@@ -162,7 +162,6 @@ let hideInstallPromotion = () => {
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
-var showInstallPromotionAtLoadCount = 0;  
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -174,12 +173,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     //console.log(`'beforeinstallprompt' event was fired.`);
   
     if(!isIos()) {
-        if(showInstallPromotionAtLoadCount === 1) {
-            hideInstallPromotion();
-        } else { // Show Install Promotion at first time
-            showInstallPromotion();
-            showInstallPromotionAtLoadCount = 1;
-        }
+        showInstallPromotion();
     }
 });
 
