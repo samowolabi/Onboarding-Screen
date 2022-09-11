@@ -142,7 +142,6 @@ let showInstallPromotionIntervalFunc = () => {
 }
 
 var myTimer = null;
-var count = 0;
 
 let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
@@ -158,18 +157,12 @@ let hideInstallPromotion = () => {
         clearInterval(myTimer);
     }
     myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
-
-    // if(state = 'notInstalled') {
-    //     clearInterval(myTimer);
-    //     myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
-    // } else {
-    //     clearInterval(myTimer);
-    // }
 }
 
 
 // Initialize deferredPrompt for use later to show browser install prompt.
 var deferredPrompt;
+var showInstallPromotionAtLoadCount = 0;  
 
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -181,17 +174,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
     //console.log(`'beforeinstallprompt' event was fired.`);
   
     if(!isIos()) {
-        showInstallPromotion();
+        if(showInstallPromotionAtLoadCount === 1) {
+            hideInstallPromotion();
+        } else { // Show Install Promotion at first time
+            showInstallPromotion();
+            showInstallPromotionAtLoadCount = 1;
+        }
     }
-    // if(!isIos()){
-    //     if(count === 0) {
-    //         // Update UI notify the user they can install the PWA
-    //         showInstallPromotion();
-    //         count++
-    //     } else {
-    //         myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
-    //     }
-    // }
 });
 
 
