@@ -125,7 +125,7 @@ let showInstallPromotion = () => {
         <div class="promotionBarDiv">
             <h1 style="text-align:center;">Add The Piano Encyclopedia to Home Screen</h1>
             <button class="installPromotionButton" onclick="installPWAApp()">Install</button>
-            <button class="hideInstallPromotionButton" onclick="hideInstallPromotion('notInstalled')">Not Now</button>
+            <button class="hideInstallPromotionButton" onclick="hideInstallPromotion()">Not Now</button>
         </div>
     `;
     document.querySelector('.installPromotionDiv').innerHTML = html;
@@ -141,10 +141,10 @@ let showInstallPromotionIntervalFunc = () => {
     }
 }
 
-var myTimer;
+var myTimer = null;
 var count = 0;
 
-let hideInstallPromotion = (state) => {
+let hideInstallPromotion = () => {
     let element = document.querySelector('.installPromotionDiv > div')
     element.style.opacity = 0;
     element.addEventListener('transitionend', function(event) {
@@ -154,12 +154,17 @@ let hideInstallPromotion = (state) => {
         document.querySelector('.installPromotionDiv').innerHTML = ``;
     }, false );
 
-    if(state = 'notInstalled') {
-        clearInterval(myTimer);
-        myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
-    } else {
+    if(myTimer !== null) {
         clearInterval(myTimer);
     }
+    myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+
+    // if(state = 'notInstalled') {
+    //     clearInterval(myTimer);
+    //     myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+    // } else {
+    //     clearInterval(myTimer);
+    // }
 }
 
 
@@ -175,15 +180,18 @@ window.addEventListener('beforeinstallprompt', (e) => {
     // Optionally, send analytics event that PWA install promo was shown.
     //console.log(`'beforeinstallprompt' event was fired.`);
   
-    if(!isIos()){
-        if(count === 0) {
-            // Update UI notify the user they can install the PWA
-            showInstallPromotion();
-            count++
-        } else {
-            myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
-        }
+    if(!isIos()) {
+        showInstallPromotion();
     }
+    // if(!isIos()){
+    //     if(count === 0) {
+    //         // Update UI notify the user they can install the PWA
+    //         showInstallPromotion();
+    //         count++
+    //     } else {
+    //         myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
+    //     }
+    // }
 });
 
 
