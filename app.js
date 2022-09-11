@@ -156,7 +156,7 @@ let hideInstallPromotion = (state) => {
 
     if(state = 'notInstalled') {
         clearInterval(myTimer);
-        myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+        myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
     } else {
         clearInterval(myTimer);
     }
@@ -181,7 +181,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
             showInstallPromotion();
             count++
         } else {
-            myTimer = setInterval(showInstallPromotionIntervalFunc, 15000);
+            myTimer = setInterval(showInstallPromotionIntervalFunc, 900000);
         }
     }
 });
