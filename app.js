@@ -174,7 +174,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     //console.log(`'beforeinstallprompt' event was fired.`);
   
     if(!isIos()) {
-        showInstallPromotion();
+        showInstallPromotionIntervalFunc();
         //showInstallPromotionAtLoadCount = 1;
     }
 });
