@@ -156,7 +156,7 @@ let hideInstallPromotion = () => {
     if(myTimer !== null) {
         clearInterval(myTimer);
     }
-    myTimer = setInterval(showInstallPromotionIntervalFunc, 10000);
+    myTimer = setInterval(showInstallPromotionIntervalFunc, 3600000);
 }
 
 
