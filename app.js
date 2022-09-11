@@ -195,7 +195,7 @@ const installPWAApp = async() => {
     // Optionally, send analytics event with outcome of user choice
     console.log(`User response to the install prompt: ${outcome}`);
 
-    if(outcome = 'dismissed') {
+   if(outcome == 'dismissed') {
         hideInstallPromotion(); // Hide the app provided install promotion
     }
 
