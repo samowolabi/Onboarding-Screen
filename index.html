@@ -136,6 +136,13 @@
             showHideLoader('close'); // Hide Loader
         }
 
+        // Detect iOS mobile
+        const detectIOSMobile = () => {
+            console.log(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+
         // Load App iframe
         let loadAppIframeFunc = (iframeURL, parentSelectorContainer) => {
             showHideLoader('open'); // Show Loader
@@ -155,7 +162,7 @@
         }
 
         //loadAppIframeFunc('../global-app/index.html', 'globalAppContainer');
-        loadAppIframeFunc('https://pianoencyclopedia.com/en/app-global/', 'globalAppContainer'); 
+        loadAppIframeFunc('https://pianoencyclopedia.com/en/app-global/?checkIfIOS='+detectIOSMobile(), 'globalAppContainer'); 
     </script> 
 
     <script src="app.js"></script>
