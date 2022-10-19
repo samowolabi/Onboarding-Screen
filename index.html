@@ -138,7 +138,7 @@
 
         // Detect iOS mobile
         const detectIOSMobile = () => {
-            console.log(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+            alert(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
             return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         }
 
